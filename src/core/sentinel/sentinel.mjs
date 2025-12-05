@@ -472,17 +472,13 @@ const validator = new CallingConventionValidator();
 
 // Public API - Direct validator interface
 export const sentinel = {
-    enter: functionName => validator.enter(functionName),
-    leave: () => validator.leave(),
-    recordMemoryWrite: (regIndex, elemIndex, address, size) =>
-        validator.recordMemoryWrite(regIndex, elemIndex, address, size),
-    recordMemoryRead: (regIndex, elemIndex, address, size) =>
-        validator.recordMemoryRead(regIndex, elemIndex, address, size),
-    recordRegisterWrite: (regIndex, elemIndex) =>
-        validator.recordRegisterWrite(regIndex, elemIndex),
-    recordRegisterRead: (regIndex, elemIndex) =>
-        validator.recordRegisterRead(regIndex, elemIndex),
-    reset: () => validator.reset(),
-    getCallDepth: () => validator.getCallDepth(),
-    getCurrentFunction: () => validator.getCurrentFunction(),
+    enter: validator.enter,
+    leave: validator.leave,
+    recordMemoryWrite: validator.recordMemoryWrite,
+    recordMemoryRead: validator.recordMemoryRead,
+    recordRegisterWrite: validator.recordRegisterWrite,
+    recordRegisterRead: validator.recordRegisterRead,
+    reset: validator.reset,
+    getCallDepth: validator.getCallDepth,
+    getCurrentFunction: validator.getCurrentFunction,
 };
