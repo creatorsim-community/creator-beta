@@ -5,5 +5,5 @@
 	path = creator-assembler
 	url = https://github.com/creatorsim/creator-assembler.git
 [submodule "OrangePiDriver"]
-	path = gateway/OrangePiDriver
+	path = OrangePiDriver
 	url = https://github.com/EUtrilla2002/OrangePiDriver.git

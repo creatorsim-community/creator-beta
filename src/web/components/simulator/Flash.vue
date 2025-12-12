@@ -91,13 +91,9 @@ export default defineComponent({
   },
 
   watch: {
-    selectedOption(newVal: string, _oldVal: string) {
+    selectedOption(_newVal: string, _oldVal: string) {
       this.targetBoard = "";
       this.activeTab = false;
-      // Prefill targetLocation when switching to SBC
-      if (newVal === "sbc") {
-        this.targetLocation = "~/creator";
-      }
     },
     targetBoard(newVal: string, _oldVal: string) {
       if (!newVal) {
@@ -262,7 +258,7 @@ export default defineComponent({
     //
 
     download_driver() {
-      downloadFile(`/gateway/${this.selectedOption}.zip`, `${this.selectedOption}.zip`);
+      downloadFile(`/gateway/${this.selectedOption}.zip`, `creatorDriver_${this.selectedOption}`);
 
       //Google Analytics
       creator_ga(
@@ -286,7 +282,6 @@ export default defineComponent({
     onTabChange() {
       if (this.targetBoard.startsWith("sbc")) {
         this.targetPort = "ubuntu@127.0.0.1";
-        this.targetLocation = "~/creator";
       } else {
         this.targetPort = this.$root!.target_ports[this.os] || "";
       }
@@ -989,6 +984,7 @@ export default defineComponent({
                 id="target-location"
                 type="text"
                 v-model="targetLocation"
+                placeholder="Enter target location"
                 size="sm"
                 class="my-2"
               />
